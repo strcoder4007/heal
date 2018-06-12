@@ -1,7 +1,5 @@
 <div [@routerTransition]>
-        <button class="btn btn-primary noteBtn" (click)="openCompose()">create a note</button>
-        <hr>
-        <h3 class="">Recent Notes:</h3>
+        <button class="btn btn-primary noteBtn" (click)="openCompose()">Create a picture note</button>
         <div *ngFor="let note of notes">
             <hr>
             <div class="note">
@@ -23,14 +21,11 @@
                 <div contenteditable="true" class="myArea" id="noteContent" [innerHTML]="textAreaContent"></div>
             </div>
             <div class="row gutter-0" style="border-top: 1px solid #333">
-                <div class="col-md-2 addFile" (click)="uploadFiles()">
-                    <i class="fa fa-paperclip"></i>
-                </div>
                 <div class="col-md-2 addPhoto"  (click)="uploadPhotos()">
                     <i class="fa fa-camera"></i>
                 </div>
-                <div class="col-md-8 addNote" (click)="addNote()">
-                        + add note
+                <div class="col-md-10 addNote" (click)="addNote()">
+                        add picture note
                 </div>
             </div>
         </div>

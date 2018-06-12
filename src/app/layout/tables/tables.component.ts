@@ -10,13 +10,7 @@ import filestack from 'filestack-js';
 })
 export class TablesComponent implements OnInit {
 
-    notes = [
-        {
-            name: "How to use:",
-            time: "17:48&nbsp;&nbsp;02/04/2018",
-            content: "You can add new notes by clicking on the \"create a note\" button above. New notes will be added in this section.<br>You can add photos, files and articles in the note. when you upload a file the file will be uploaded and a url will be generated. After clicking on \"add the note\" button, you can view your files."
-        }
-    ];
+    notes = [];
     showModal: Boolean = false;
     apiKey: String = 'A9CFNM6bKS2qOfMvu8SSQz';
     textAreaContent: string;
@@ -60,21 +54,15 @@ export class TablesComponent implements OnInit {
         });
     }
 
-    uploadFiles() {
-        const client = filestack.init(this.apiKey);
-        client.pick({
-            accept: ['.doc', '.pdf'],
-            maxFiles: 1
-        }).then(function (result) {
-            return result.filesUploaded[0];
-        }).then(x => {
-            let fileUrl = x.url;
-            let fileName = x.filename;
-            document.getElementById("noteContent").innerHTML += "<a target=\"_blank\" href=\""+ fileUrl +"\"> "+fileName+" </a>";
-            this.textAreaContent = document.getElementById("noteContent").innerHTML;
-        });
+
+    ngOnInit() {
+        var date = new Date();
+        this.notes.push(
+            {
+                name: "How to use:",
+                time: date.getHours() + ":"+date.getMinutes()+"&nbsp;&nbsp;"+ date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear(),
+                content: "You can add new picture note by clicking on the \"Create a picture note\" button above.<br>You can add:<ul><li>Title</li><li>Description</li><li>Photos</li></ul>"                
+            }
+        );
     }
-
-
-    ngOnInit() {}
 }

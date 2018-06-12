@@ -1,7 +1,5 @@
 <div [@routerTransition]>
-        <button class="btn btn-primary noteBtn" (click)="openCompose()">create a note</button>
-        <hr>
-        <h3 class="">Recent Notes:</h3>
+        <button class="btn btn-primary noteBtn" (click)="openCompose()">Upload a document</button>
         <div *ngFor="let note of notes">
             <hr>
             <div class="note">
@@ -30,7 +28,7 @@
                     <i class="fa fa-camera"></i>
                 </div>
                 <div class="col-md-8 addNote" (click)="addNote()">
-                        + add note
+                        upload document
                 </div>
             </div>
         </div>
