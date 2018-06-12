@@ -1,78 +1,37 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Bar Chart
+        <button class="btn btn-primary noteBtn" (click)="openCompose()">create a note</button>
+        <hr>
+        <h3 class="">Recent Notes:</h3>
+        <div *ngFor="let note of notes">
+            <hr>
+            <div class="note">
+                    <h5><b>{{note.name}}</b></h5>
+                    <small style="padding-left: 5px;" [innerHTML]="note.time"></small>
+                <p [innerHTML]="note.content"></p>
+            </div>
+        </div>
+        <div *ngIf="showModal" class="myModal">
+            <div class="row gutter-0">
+                <div class="col-md-10">
+                    <input type="text" placeholder="enter the name..." class="form-control inputName" id="noteName"/>
                 </div>
-                <div class="card-body">
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
+                <div class="col-md-2" style="text-align: center; background-color: crimson; cursor: pointer;" (click)="closeCompose()">
+                    <img class="closeBtn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHYSURBVGhD7ZjJSgNBEIajXlWIGncFX8QNL+4XX8KzL6CIiIiIRsHncTm5gRg3FJ/Cg5fEr0NV6CjEJJNkeqA++KmZ6pnu+mIOasowDMMwDMMIj0Kh0C6XDaMZe1Ykn8+vkWuSkVZk2GuS5MiEtJoLn1qHk6AWqA8ksgx7OIkvtydsSrv5cFgfB9+7U6PK8O6USlBPKW2y1Bo40Jd5JP2yVDW8Oh2rhMLhveROBnHf7wFZ+hde8SVOKPFIKAxRswzPzBCVyMYuoTBMD1GZJ8qgLP2B9VmiEseUMCQUhnIytzLgMxmSpRL0fImj4CQUhvNlXkhJhtYc9+FLKAyY/iUzzKUvcUgJW0Jh0DS5kcE/EymhMLD7yeScgIPrM1lKFgw+T77Fw4m8khFZTgYMvKAS1Cy5kus3kgwZBl0kKnEgvW7iy4wWHw4VBvQl9qVdhHsncxm8DIMtEZXYk3YZ9H2ZdxKWDAMtk4oSCutdxJcZk6V4YRBfYlfaFeG5sGQYYIWoxI60q4LnncyFvPtB4pHh4FVSl4TCe2UylHFZag0c6ktsS7su2KIzFhkOcv980L89tqQdCbZyMueyZ6QPpiY4LEPW5bYhiMwGNVm/VBqGYRiGYRhJIZX6AYRn6GJWa05DAAAAAElFTkSuQmCC">
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
+            </div> 
+            <div class="row gutter-0">
+                <div contenteditable="true" class="myArea" id="noteContent" [innerHTML]="textAreaContent"></div>
+            </div>
+            <div class="row gutter-0" style="border-top: 1px solid #333">
+                <div class="col-md-2 addFile" (click)="uploadFiles()">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="col-md-2 addPhoto"  (click)="uploadPhotos()">
+                    <i class="fa fa-camera"></i>
+                </div>
+                <div class="col-md-8 addNote" (click)="addNote()">
+                        + add note
                 </div>
             </div>
         </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Doughnut Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Radar Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Pie Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Polar Area Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Line Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
