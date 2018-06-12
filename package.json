@@ -9,7 +9,8 @@
         "gitbuild": "ng build --prod --base /start-angular/SB-Admin-BS4-Angular-5/master/dist/",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "deploy": "git pull && ng build --prod --base-href /heal/ && sudo mv dist ../../html/ && sudo rm -r ../../html/heal && sudo mv ../../html/dist ../../html/heal"
     },
     "private": true,
     "dependencies": {
