@@ -4,3 +4,105 @@
 @import "utils";
 @import "rtl";
 @import "responsive";
+
+.myModal {
+    height: 500px;
+    width: 370px;
+    position: fixed;
+    right: 15px;
+    bottom: 0px;
+    background-color: #222;
+    color: whitesmoke;
+    z-index: 1000;
+    font-family: "open sans";
+}
+.inputName {
+    width: 100%;
+    height: 40px;
+    font-family: "open sans";
+    font-size: 1em;
+    background-color: transparent;
+    border: 0px solid;
+    border-bottom: 1px solid #333;
+    color: whitesmoke;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.noteBtn {
+    border-radius: 0px;
+    color: whitesmoke;
+}
+
+.closeBtn {
+    height: 40px;
+    width: auto;
+}
+
+.myArea {
+    height: 420px;
+    width: 370px;
+    font-family: "open sans";
+    font-size: .9em;
+    background-color: transparent;
+    border: 0px solid;
+    color: whitesmoke;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.addFile {
+    background-color: #0077f7;
+    text-align: center;
+    font-size: 18px;
+    height: 40px;
+    padding-top: 6px;
+    cursor: pointer;
+}
+.addPhoto {
+    text-align: center;
+    background-color: #0077f7;
+    font-size: 18px;
+    height: 40px;
+    padding-top: 6px;
+    border-left: 1px solid whitesmoke;
+    cursor: pointer;
+}
+.addNote {
+    background-color: #28a745;
+    text-align: center;
+    font-size: 18px;
+    height: 40px;
+    padding-top: 6px;
+    border-left: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.note {
+    background-color: whitesmoke;
+    min-height: 10px;
+    width: 100%;
+}
+
+.note > h5 {
+    padding: 5px;
+}
+.note > p {
+    padding: 5px;
+}
+
+
+
+
+
+
+.gutter-0.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.gutter-0 > [class^="col-"]{
+    padding-right: 0;
+    padding-left: 0;
+}
