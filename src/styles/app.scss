@@ -21,14 +21,20 @@
     height: 40px;
     font-family: "open sans";
     font-size: 1em;
-    background-color: transparent;
+    background-color: #222;
     border: 0px solid;
     border-bottom: 1px solid #333;
     color: whitesmoke;
 }
+.inputName:focus {
+    background-color: #222 !important;
+    color: whitesmoke;
+    border: none;
+}
 
 input:focus, textarea:focus, select:focus{
     outline: none;
+    background-color: #222;
 }
 
 .noteBtn {
